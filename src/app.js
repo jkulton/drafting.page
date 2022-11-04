@@ -1,12 +1,11 @@
 import {EditorState} from "@codemirror/state"
 import {EditorView, keymap, highlightActiveLine} from "@codemirror/view"
 import {defaultKeymap} from "@codemirror/commands"
-import { oneDark } from '@codemirror/theme-one-dark';
 
 document.addEventListener('DOMContentLoaded', () => {
   const editorElement = document.body.querySelector('#editor');
-  let saveDebounce;
   const existingContent = localStorage.getItem('__content');
+  let saveDebounce;
   
   function updateHandler(event) {
     if (!event.docChanged) {
@@ -26,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 500);
   }
   
-  let startState = EditorState.create({
+  const startState = EditorState.create({
     doc: existingContent || '',
     extensions: [
       keymap.of(defaultKeymap),
@@ -34,12 +33,10 @@ document.addEventListener('DOMContentLoaded', () => {
       EditorView.updateListener.of(updateHandler),
       oneDark,
     ]
-  })
+  });
   
-  let view = new EditorView({
+  const view = new EditorView({
     state: startState,
     parent: editorElement
   });
-
-  view.highlightActiveLine();
 });
