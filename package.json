@@ -2,8 +2,10 @@
   "name": "drafting.page",
   "version": "1.0.0",
   "description": "Single page notepad persisted to localStorage",
+  "source": "src/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "parcel",
+    "build": "parcel build"
   },
   "author": "",
   "license": "ISC",
