@@ -30,8 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     extensions: [
       keymap.of(defaultKeymap),
       highlightActiveLine(),
-      EditorView.updateListener.of(updateHandler),
-      oneDark,
+      EditorView.updateListener.of(updateHandler)
     ]
   });
   
