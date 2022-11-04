@@ -1,3 +1,3 @@
 # 📝 drafting.page
 
-Single page notepad persisted to localStorage
+A notepad in your browser, persisted to localStorage
