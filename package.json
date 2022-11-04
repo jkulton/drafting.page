@@ -1,0 +1,17 @@
+{
+  "name": "drafting.page",
+  "version": "1.0.0",
+  "description": "Single page notepad persisted to localStorage",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.7.0"
+  },
+  "dependencies": {
+    "@codemirror/theme-one-dark": "^6.1.0",
+    "codemirror": "^6.0.1"
+  }
+}
