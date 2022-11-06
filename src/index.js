@@ -25,9 +25,8 @@ self.MonacoEnvironment = {
 
 document.addEventListener('DOMContentLoaded', () => {
 	const container = document.getElementById('container');
-	let saveDebounce;
-
   monaco.editor.setTheme('vs-dark');
+	let saveDebounce;
 
   function modelChangeHandlerFactory(editor) {
     return function() {
@@ -62,7 +61,6 @@ document.addEventListener('DOMContentLoaded', () => {
       wordBasedSuggestions: false
     };
     const editor = monaco.editor.create(container, options);
-    editor.setTheme('vs-dark');
     return editor;
   }
 
