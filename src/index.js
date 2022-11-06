@@ -25,7 +25,6 @@ self.MonacoEnvironment = {
 
 document.addEventListener('DOMContentLoaded', () => {
 	const container = document.getElementById('container');
-  monaco.editor.setTheme('vs-dark');
 	let saveDebounce;
 
   function modelChangeHandlerFactory(editor) {
@@ -42,32 +41,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function resizeWindowHandlerFactory(editor) {
-    return function() {
-      editor.layout();
-    }
+  const options = {
+    value: localStorage.getItem('__content') || '',
+    showFoldingControls: 'always',
+    language: 'markdown',
+    theme: 'vs-dark',
+    folding: true,
+    fontSize: 16,
+    // wordBasedSuggestions are verbose when writing markdown
+    // Docs: https://github.com/microsoft/monaco-editor/blob/0f8ea460807f622d791c72dfb3ae1f22a54c209b/website/typedoc/monaco.d.ts#L1233-L1237
+    wordBasedSuggestions: false
   }
 
-  function renderEditor(monaco) {
-    const content = localStorage.getItem('__content') || '';
-    const options = {
-      value: content,
-      language: 'markdown',
-      fontSize: 16,
-      folding: true,
-      showFoldingControls: 'always',
-      // wordBasedSuggestions are verbose when writing markdown
-      // Docs: https://github.com/microsoft/monaco-editor/blob/0f8ea460807f622d791c72dfb3ae1f22a54c209b/website/typedoc/monaco.d.ts#L1233-L1237
-      wordBasedSuggestions: false
-    };
-    const editor = monaco.editor.create(container, options);
-    return editor;
-  }
-
-  const editor = renderEditor(monaco);
+  const editor = monaco.editor.create(container, options);
 
   editor.onDidChangeModelContent(modelChangeHandlerFactory(editor));
-  window.addEventListener('resize', resizeWindowHandlerFactory(editor));
-
-  window.editor = editor;
+  window.addEventListener('resize', () => editor.layout());
 });
