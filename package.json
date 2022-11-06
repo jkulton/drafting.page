@@ -4,16 +4,20 @@
   "description": "Single page notepad persisted to localStorage",
   "source": "src/index.html",
   "scripts": {
-    "start": "parcel",
+    "start": "parcel ./src/index.html",
     "build": "parcel build"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "parcel": "^2.7.0"
+    "buffer": "^6.0.3",
+    "parcel": "^2.7.0",
+    "process": "^0.11.10"
   },
   "dependencies": {
-    "@codemirror/theme-one-dark": "^6.1.0",
-    "codemirror": "^6.0.1"
+		"buffer": "^6.0.3",
+		"monaco-editor": "^0.31.1",
+		"parcel": "^2.2.1",
+		"process": "^0.11.10"
   }
 }
